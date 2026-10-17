@@ -131,10 +131,10 @@ if(DEFINED mumps_root AND NOT "${mumps_root}" STREQUAL "")
     # Check for MKLROOT environment variable on Windows and set MKL paths accordingly
     if(DEFINED ENV{MKLROOT})
         set(MKL_IDIR "$ENV{MKLROOT}/include")
-        set(MKL_LDIR "$ENV{MKLROOT}/lib/intel64")
+        set(MKL_LDIR "$ENV{MKLROOT}/lib")
     else()
         set(MKL_IDIR "C:/Program Files (x86)/Intel/oneAPI/mkl/latest/include")
-        set(MKL_LDIR "C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib/intel64")
+        set(MKL_LDIR "C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib")
     endif()
 
     # Set MKL libraries with Windows-compatible linker flags for Intel compilers
