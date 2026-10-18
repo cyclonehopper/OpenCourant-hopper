@@ -690,7 +690,7 @@ C---------------------------------
               STIF(I) = MAX(STIF(I) ,FAC*SQRT(VISCFFRIC(I))*VIS*DT1INV)
               FFO = FF
               FF = FF * VN(I)
-C           ECONVT = ECONVT + FF * VN(I) * DT1
+           ECONTDT = ECONTDT + FF * VN(I) * DT1   ! viscous damping energy, cf. i23for3.F:224
               FNI(I)  = FNI(I) + FF
             ENDDO
           ELSE
@@ -702,7 +702,7 @@ C           ECONVT = ECONVT + FF * VN(I) * DT1
               KT(I)= STIF0(I)
               STIF(I) = STIF0(I) + C(I) * DT1INV
               FF = C(I) * VN(I)
-C           ECONVT = ECONVT + FF * VN(I) * DT1
+           ECONTDT = ECONTDT + FF * VN(I) * DT1
               FNI(I)  = FNI(I) + FF
               CF(I)   = FAC*SQRT(VISCFFRIC(I))*VIS
               STIF(I) = MAX(STIF(I) ,CF(I)*DT1INV)
@@ -738,7 +738,7 @@ C---------------------------------
               STIF(I) = MAX(STIF(I) ,FAC*SQRT(VISCFFRIC(I))*VIS*DT1INV)
               FFO = FF
               FF = FF * VN(I)
-C           ECONTDT = ECONTDT + FF * VN(I) * DT1
+           ECONTDT = ECONTDT + FF * VN(I) * DT1
               FNI(I)  = FNI(I) + FF
             ENDDO
           ELSE
@@ -750,7 +750,7 @@ C           ECONTDT = ECONTDT + FF * VN(I) * DT1
               KT(I)= STIF0(I)
               STIF(I) = STIF(I) + C(I) * DT1INV
               FF = C(I) * VN(I)
-C           ECONTDT = ECONTDT + FF * VN(I) * DT1
+           ECONTDT = ECONTDT + FF * VN(I) * DT1
               FNI(I)  = FNI(I) + FF
               CF(I)   = FAC*SQRT(VISCFFRIC(I))*VIS
               STIF(I) = MAX(STIF(I) ,CF(I)*DT1INV)
@@ -769,7 +769,7 @@ C---------------------------------
             STIF(I) = STIF0(I) + TWO* FF * DT1INV
             STIF(I) = MAX(STIF(I) ,FAC*SQRT(VISCFFRIC(I))*VIS*DT1INV)
             FF = FF * VN(I)
-C          ECONTDT = ECONTDT+ FF * VN(I) * DT1
+          ECONTDT = ECONTDT + FF * VN(I) * DT1
             FNI(I)  = FNI(I) + FF
           ENDDO
         ELSEIF(IVIS2==4)THEN
