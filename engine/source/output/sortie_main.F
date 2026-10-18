@@ -1963,10 +1963,13 @@ C in spmd, fsav must be reset to 0 on p0, where fsav is not accumulated
       ENDIF
 
 C  FSAV(26) : contact elastic energy is not cumulated : only for int10 and int18 for the moment
+C  int24 joins them: its CE_ELAST is a cumulative contact energy like int10's and int18's, and
+C  the per-cycle value it accumulates is the penalty spring's stored energy, so discarding it
+C  left TYPE24 with no elastic contact-energy output at all.
       IF(NINTER > 0)THEN
           DO I=1,NINTER
             ITY = IPARI(7,I)
-            IF(ITY /= 10.AND.(ITY /= 7.OR.IPARI(22,I) /= 7)) THEN 
+            IF(ITY /= 10.AND.ITY /= 24.AND.(ITY /= 7.OR.IPARI(22,I) /= 7)) THEN 
                FSAV(26,I) = ZERO
             ENDIF
             FSAV(29,I) = ZERO ! CAREA output is not cumulated too 
